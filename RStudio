@@ -1,0 +1,18 @@
+#predicting % of students based on number of study hours#
+>student<-read.CSV("https://raw.githubusercontent.com/AdiPersonalWorks/Random/master/student_scores%20-%20student_scores.csv")
+>print("reading student data")
+>student
+#plotting graph
+>plot(x=student$Hours, y=student$scores,xlab="hours studied",ylab="percentage scored",main="percentage scores vs hours studied")
+#linear regression
+>student.reg<-LM(scores ~ hours, data= student)
+>student.reg
+>abline(student.reg,col="blue")
+>print(summary(student.reg))
+>fitted(student.reg)
+>residuals(student.reg)
+>study_hour<-data.frame(hours= 9.25)
+>prediction_result<-predict(student.reg,study_hour)
+>print("predicted student score for studying 9.25hrs/day is ")
+>print(prediction_result)
+
